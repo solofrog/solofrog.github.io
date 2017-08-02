@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  @include trans(0.35s ease-in-out);
+  &:hover {
+    text-decoration: none;
+    color: $ekr-red;
+  }
+}
+
+#about,
+#members,
+#tools,
+#media,
+#join {
+  padding: 1rem 1rem 4rem;
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+#about.gradient,
+#join.gradient {
+  @include gradient('diagnoal', 45, '', $grey-lightest, $grey, 0%, 100%);
+}
+
+#members {
+  .memberImg {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: $ekr-red;
+    padding: 0;
+    margin: 0 auto .5rem;;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h4 {}
+}
+
+#tools {
+  background-color: $ekr-red;
+}
+
+form {
+  input.form-control {
+    margin: .5rem auto;
+    padding: 1rem;
+    border-radius: $base-border-radius;
+    background-color: $form-input-background-color;
+    color: $grey-lightest;
+    border-color: $grey-lightest;
+    &::placeholder {
+      color: $grey-lightest;
+    }
+    &:focus {
+      background-color: $offwhite;
+      color: $grey-darkest;
+    }
+  }
+}
+
+.horizontal-gradient {
+  @include gradient('horizontal', '', 'horizontal', grey, black, 0%, 100%);
+}
+
+.vertical-gradient {
+  @include gradient('vertical', '', 'vertical', grey, black, 0%, 100%);
+}
+
+.radial-gradient {
+  @include gradient('radial', '', '', grey, black, 0%, 100%);
+}
+
+.diagonal-gradient {
+  @include gradient('diagnoal', 45, '', grey, black, 0%, 100%);
+}
+
+footer {
+  background-color: $grey-darkest;
+  color: $grey-lightest;
+  text-align: center;
+  padding: 1rem;
+}

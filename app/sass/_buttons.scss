@@ -1,0 +1,7 @@
+.btn-white {
+	@include ghost-button($white, 40px, 2px solid,  inline-block)
+}
+
+.btn-red {
+	@include ghost-button($ekr-red, 40px, 2px solid,  inline-block)
+}

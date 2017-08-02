@@ -1,0 +1,89 @@
+@mixin trans($val...) {
+    -webkit-transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+    transition: $val;
+}
+
+@mixin ghost-button($ghost-button-color, $ghost-button-height, $ghost-button-border, $ghost-button-display) {
+    background: rgba($ghost-button-color, .1);
+    border-radius: $base-border-radius;
+    border: $ghost-button-border;
+    border-color: rgba($ghost-button-color, .5);
+    color: $ghost-button-color;
+    display: $ghost-button-display;
+    text-align: center;
+    text-decoration: none;
+    padding: 1em 3em;
+    text-transform: uppercase;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    @include trans(0.35s ease-in-out);
+    &:hover {
+        background: $ghost-button-color;
+        @if $ghost-button-color==#FFFFFF {
+            color: #000000;
+        }
+        @else {
+            color: #FFFFFF;
+        }
+    }
+}
+
+@mixin gradient($type, $deg, $direction, $beg-color, $end-color, $start-perc, $end-perc) {
+    @if $type=='radial' {
+        background: $beg-color;
+        background: -moz-radial-gradient(center, ellipse cover, $beg-color $start-perc, $end-color $end-perc);
+        background: -webkit-radial-gradient(center, ellipse cover, $beg-color $start-perc, $end-color $end-perc);
+        background: radial-gradient(ellipse at center, $beg-color $start-perc, $end-color $end-perc);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$beg-color', endColorstr='$end-color', GradientType=1);
+    }
+    @else {
+        @if $deg!='' {
+            $revdeg: '';
+            @if $deg < 0 {
+                $revdeg: calc(180 - strip-units($deg)) + deg;
+            }
+            else {
+                $revdeg: $deg + deg;
+            }
+            background: $beg-color;
+            background: -moz-linear-gradient($deg, $beg-color $start-perc, $end-color $end-perc);
+            background: -webkit-linear-gradient($deg, $beg-color $start-perc, $end-color $end-perc);
+            background: linear-gradient($revdeg, $beg-color $start-perc, $end-color $end-perc);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$beg-color', endColorstr='$end-color', GradientType=1);
+        }
+        @else {
+            @if $direction!='vertical' {
+                background: $beg-color;
+                /* Old browsers */
+                background: -moz-linear-gradient(top, $beg-color $start-perc, $end-color $end-perc);
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, $beg-color $start-perc, $end-color $end-perc);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, $beg-color $start-perc, $end-color $end-perc);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$beg-color', endColorstr='$end-color', GradientType=0);
+                /* IE6-9 */
+            }
+            @else {
+                background: $beg-color;
+                /* Old browsers */
+                background: -moz-linear-gradient(left, $beg-color $start-perc, $end-color $end-perc);
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(left, $beg-color $start-perc, $end-color $end-perc);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right, $beg-color $start-perc, $end-color $end-perc);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$beg-color', endColorstr='$end-color', GradientType=1);
+                /* IE6-9 */
+            }
+        }
+    }
+}
+
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
