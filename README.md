@@ -1,5 +1,3 @@
-# Gulp Starter for CSS Tricks Tutorial  
-
-This repo is a gulp starter for this CSS Tricks tutorial. 
+# EmoKyloRen Guild Site  
 
 Remember to do run the `npm install` command after cloning this repo :) 
